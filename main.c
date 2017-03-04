@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-int allcash(int cash, time){
+int allcash(int cash, int time){
 	int p;
 	if(time > -1 && time < 31)
 		p = -10;
@@ -13,9 +13,9 @@ int allcash(int cash, time){
 		p = 12;
 		
 	if (cash > 100000)
-		p += floor(p/6)+1;
+		p = p + (p/6) +1;
 		
-	return(cash * time * p);
+	return(((cash * time * p)/365)/100);
 }
 
 int main()
@@ -24,11 +24,15 @@ int main()
 	int cashin, time, cashout, p;
 	
 	printf("How much of cash are you ready to throw: ");
-	scanf("  %d\n", &cashin);
+	scanf("%d\n", &cashin);
 	
-	printf("How long your money won't be with you: ");
-	scanf("  %d\n", &time);
+	printf("How long: ");
+	scanf("%d\n", &time);
 	
-	p = (allcash(cashin, time)/365)/100;
+	p = allcash(cashin, time);
 	cashout = cashin + p;
+	
+	printf("All your money right now: %d\n", cashout);
+	
+	return 0;
 }
