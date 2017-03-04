@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include <cmath>
+#include <math.h>
 
-int allcash(cash, time){
+int allcash(int cash, time){
 	int p;
 	if(time > -1 && time < 31)
 		p = -10;
