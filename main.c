@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 
 int check(int day, int cash){
 	if((day > -1) && (day < 366) && (cash >= 10000))
@@ -8,20 +7,29 @@ int check(int day, int cash){
 }
 
 int allcash(int cash, int time){
-	int p;
+	int p = 1;
+
 	if(time > -1 && time < 31)
 		p = -10;
-	if(time > 30 && time < 121)
-		p = 2;
-	if(time > 120 && time < 241)
-		p = 6;
-	if(time > 240 && time < 366)
-		p = 12;
 
-	if (cash > 100000)
-		p = p + (p/6) +1;
+	if(time > 30 && time < 121){
+		if (cash > 100000) p = 3;
+		else p = 2;
+	}
 
-	return(((cash * time * p)/365)/100+cash);
+	if(time > 120 && time < 241){
+		if (cash > 100000) p = 8;
+		else p = 6;
+	}
+
+	if(time > 240 && time < 366){
+		if (cash > 100000) p = 15;
+		else p = 12;
+	}
+
+	cash += (cash*p)/100;
+
+	return cash;
 }
 
 int main()
