@@ -2,9 +2,9 @@
 
 int check(int day, int cash){
 	if ((day > -1) && (day < 366) && (cash >= 10000)) {
-	return 1;
-	} else { 
-	return 0;
+		return 1;
+	} else {
+		return 0;
 	}
 }
 
