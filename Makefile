@@ -1,3 +1,4 @@
+.PHONY: clean
 
 all: bin/deposit-calc
 
@@ -9,3 +10,6 @@ build/deposit.o: src/deposit.c
 
 bin/deposit-calc: build/main.o build/deposit.o src/deposit.h
 	gcc -Wall -Werror -o bin/deposit-calc build/main.o build/deposit.o
+
+clean:
+	rm -f build/* bin/*
